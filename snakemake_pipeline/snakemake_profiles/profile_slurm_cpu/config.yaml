@@ -1,0 +1,31 @@
+cluster:
+  mkdir -p data/pipeline_output/slurm_logs/{rule} &&
+  sbatch
+    --cpus-per-task={resources.cpus_per_task}
+    --ntasks=1
+    --mem={resources.mem_mb}
+    --time={resources.time}
+    --nodes={resources.nodes}
+    --job-name={rule}-{wildcards}
+    --output=data/pipeline_output/slurm_logs/{rule}/slurm-%j-{rule}-{wildcards}.out
+    --mail-type=BEGIN,END,FAIL
+    --mail-user=elena.buglakova@embl.de
+    --partition=htc-el8
+default-resources:
+  - nodes=1
+  - mem_mb="32GB"
+  - cpus_per_task=8
+  - time="01:00:00" # hh:mm:ss
+restart-times: 0
+max-jobs-per-second: 10
+max-status-checks-per-second: 1
+local-cores: 1
+latency-wait: 60
+jobs: 500
+keep-going: True
+rerun-incomplete: True
+printshellcmds: True
+scheduler: greedy
+use-conda: True
+cluster-cancel: scancel
+printshellcmds: True

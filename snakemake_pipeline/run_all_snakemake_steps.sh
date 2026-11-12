@@ -1,0 +1,9 @@
+snakemake --use-conda -s 01_snakefile_multiview_registration.smk --profile snakemake_profiles/profile_slurm_cpu/;
+snakemake --use-conda -s 02_snakefile_spot_detection.smk --profile snakemake_profiles/profile_slurm_gpu_3090/
+snakemake --use-conda -s 03_snakefile_segmentation_prediction.smk --profile snakemake_profiles/profile_slurm_gpu_3090/
+snakemake --use-conda  -s 04_snakefile_segmentation_postprocessing.smk --profile snakemake_profiles/profile_slurm_cpu/
+snakemake --use-conda  -s 05_snakefile_cell_regions.smk --profile snakemake_profiles/profile_slurm_cpu/
+snakemake --use-conda  -s 06_snakefile_rigid_intersample_registration.smk --profile snakemake_profiles/profile_slurm_cpu/
+snakemake --use-conda  -s 07_snakefile_cpd_intersample_registration_gpu.smk --profile snakemake_profiles/profile_slurm_gpu_3090/
+snakemake --use-conda  -s 09_snakefile_platybrowser_export.smk --profile snakemake_profiles/profile_gpu1
+snakemake --use-conda  -s 08_snakefile_export_expression.smk --profile snakemake_profiles/profile_gpu1
