@@ -2,7 +2,7 @@
 
 Snakemake pipeline for creating a molecular atlas for 6 dpf *Platynereis dumrilii*.
 
-![Pipeline visualization](data/pipeline_animation.gif "Pipeline visualization")
+![Pipeline visualization](pipeline_animation.gif "Pipeline visualization")
 
 ## Installation
 
